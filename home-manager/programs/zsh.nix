@@ -10,7 +10,6 @@
       update-nix = "sudo nixos-rebuild switch";
     };
     
-    # autosuggestions.enable = true;
     oh-my-zsh = {
       enable = true;
       theme = "robbyrussell";

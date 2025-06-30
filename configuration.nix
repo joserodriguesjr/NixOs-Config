@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 let
@@ -11,27 +7,31 @@ in
   imports =
     [
       ./hardware-configuration.nix
+
       "${home-manager}/nixos"
     ];
-
-  users.defaultUserShell = pkgs.zsh;
-  home-manager.users.runior = import ./home-manager/home.nix;
   
+  nix.extraOptions = ''experimental-features = nix-command'';
+
+  programs.zsh.enable = true;
+
+  users = {
+    defaultUserShell = pkgs.zsh;
+    users.root.shell = pkgs.zsh;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.runior = {
-#    home = "/home/runior";
-    shell = pkgs.zsh;
     isNormalUser = true;
     description = "Jose Rodrigues";
     extraGroups = [ "networkmanager" "wheel" ];
-
-    packages = with pkgs; [
-      kdePackages.kate
-    #  thunderbird
-    ];
+    useDefaultShell = true;
   };
 
-  programs.zsh.enable = true;
+  # Home-manager config
+  home-manager.useUserPackages = true;  # Packages install to /etc/profiles
+  home-manager.useGlobalPkgs = true;    # Use global package definitions
+  home-manager.users.runior = import ./home-manager/home.nix;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -118,10 +118,21 @@ in
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     home-manager
+    
+    git
+    zsh
+    
     htop
     wget
+    curl
+
+    kdePackages.kate
     kdePackages.bluedevil
     kdePackages.bluez-qt
+  ];
+
+  environment.shells = with pkgs; [
+    zsh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
