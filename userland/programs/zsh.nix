@@ -7,7 +7,8 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      update-nix = "sudo nixos-rebuild switch";
+      rebuild-nix = "sudo nixos-rebuild switch";
+      upgrade-nix = "sudo nixos-rebuild switch --upgrade";
     };
     
     oh-my-zsh = {

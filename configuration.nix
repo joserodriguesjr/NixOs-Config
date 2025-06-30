@@ -8,6 +8,8 @@ in
     [
       ./hardware-configuration.nix
 
+      ./kernel/kernel.nix
+
       "${home-manager}/nixos"
     ];
   
@@ -24,22 +26,17 @@ in
   users.users.runior = {
     isNormalUser = true;
     description = "Jose Rodrigues";
-    extraGroups = [ "networkmanager" "wheel" ];
-    useDefaultShell = true;
+    extraGroups = [ "networkmanager" "wheel" "kvm" "libvirtd" "docker" ];
   };
 
   # Home-manager config
   home-manager.useUserPackages = true;  # Packages install to /etc/profiles
   home-manager.useGlobalPkgs = true;    # Use global package definitions
-  home-manager.users.runior = import ./home-manager/home.nix;
+  home-manager.users.runior = import ./userland/home.nix;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # Bluetooth
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -118,7 +115,11 @@ in
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     home-manager
-    
+
+    docker
+    docker-compose
+    lazydocker
+
     git
     zsh
     
