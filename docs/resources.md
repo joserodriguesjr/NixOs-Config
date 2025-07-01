@@ -38,6 +38,10 @@ https://nixos.wiki/wiki/Docker
 
 https://discourse.nixos.org/t/how-to-run-docker-daemon-from-nix-not-nixos/43413/4
 
+### secrets
+
+https://github.com/Mic92/sops-nix?tab=readme-ov-file
+
 ## User
 
 https://devenv.sh/
@@ -48,6 +52,8 @@ https://nixos.wiki/wiki/Visual_Studio_Code
 https://discourse.nixos.org/t/home-manager-vscode-extension-settings-mutableextensionsdir-false/33878
 
 https://davi.sh/blog/2024/11/nix-vscode/
+
+fonts: https://medium.com/@miffataphlesfkagh/jetbrains-mono-a-special-font-for-developers-bc35443eec2f
 
 ### shell
 https://github.com/wahtique/dotfiles/blob/main/dot_config/home-manager/shell.nix.tmpl
