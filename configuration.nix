@@ -132,6 +132,8 @@ in
 
     git
     zsh
+
+    unar
     
     htop
     wget

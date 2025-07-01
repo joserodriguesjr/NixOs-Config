@@ -28,9 +28,27 @@ https://nixos.wiki/wiki/Steam
 
 https://discourse.nixos.org/t/error-the-option-programs-steam-does-not-exist/48510
 
+https://nix-community.github.io/home-manager/options.xhtml#opt-programs.lutris.steamPackage
+
 https://www.reddit.com/r/NixOS/comments/16mzmjf/cleanest_way_to_install_steam/
 
 https://github.com/LongerHV/nixos-configuration/blob/71667b6859588dc060c89ee9e1e645ee6a748955/modules/nixos/sunshine.nix
+
+bluetooth controller
+https://pastebin.com/Mir1GnrH
+https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/hardware/xone.nix
+
+#### PS2
+
+https://pcsx2.net/
+https://search.nixos.org/packages?channel=25.05&show=pcsx2&from=0&size=50&sort=relevance&type=packages&query=PCSX2
+https://www.reddit.com/r/EmulationOnPC/comments/1aj96mp/how_to_download_a_pcsx2_bios_properly/
+https://emulation.gametechwiki.com/index.php/Emulator_files
+
+https://romsfun.com/roms/playstation-2/
+
+https://www.libretro.com/
+https://www.retroarch.com/
 
 ### Docker
 
