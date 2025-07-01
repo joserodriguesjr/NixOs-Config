@@ -23,11 +23,6 @@
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
-  
-  fileSystems."/mnt/ssd1tb" =
-    { device = "/dev/disk/by-uuid/6aca9d33-261d-4fc1-a117-a95c79186197";
-      fsType = "btrfs";
-    };
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/ebdf4e4f-f39e-4e1d-97c3-b226dd26b5d2"; }

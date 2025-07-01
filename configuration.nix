@@ -166,6 +166,12 @@ in
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+  # File system config
+  fileSystems."/mnt/ssd1tb" =
+    { device = "/dev/disk/by-uuid/6aca9d33-261d-4fc1-a117-a95c79186197";
+      fsType = "btrfs";
+    };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
