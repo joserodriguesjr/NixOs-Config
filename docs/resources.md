@@ -13,6 +13,10 @@ Options: https://search.nixos.org/options?channel=25.05&from=0&size=50&sort=rele
 NixOs -> https://nixos.org/manual/nixos/stable/
 
 Home Manager -> https://nixos.wiki/wiki/Home_Manager
+Home Manager Options -> https://nix-community.github.io/home-manager/options.xhtml
+https://www.reddit.com/r/NixOS/comments/1bmtjjs/what_do_you_put_in_configurationnix_and_what_in/
+
+https://www.reddit.com/r/NixOS/comments/1bk430s/how_do_you_structure_your_modules_and_imports/
 
 ## Kernel
 
@@ -44,3 +48,6 @@ https://nixos.wiki/wiki/Visual_Studio_Code
 https://discourse.nixos.org/t/home-manager-vscode-extension-settings-mutableextensionsdir-false/33878
 
 https://davi.sh/blog/2024/11/nix-vscode/
+
+### shell
+https://github.com/wahtique/dotfiles/blob/main/dot_config/home-manager/shell.nix.tmpl

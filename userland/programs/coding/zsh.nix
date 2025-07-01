@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   home.sessionVariables.SHELL = "${pkgs.zsh}/bin/zsh";
@@ -7,6 +7,17 @@
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+
+    # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.zsh.initContent
+    initContent = 
+      let 
+        #zshConfigEarlyInit = lib.mkOrder 500 "Starting ZSH..."; 
+        zshConfig = lib.mkOrder 1000 "fastfetch"; 
+      in 
+        lib.mkMerge [ 
+          #zshConfigEarlyInit 
+          zshConfig 
+        ];
 
     shellAliases = {
       rebuild-nix = "sudo nixos-rebuild switch";

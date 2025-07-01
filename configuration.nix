@@ -126,6 +126,7 @@ in
     htop
     wget
     curl
+    fastfetch
 
     kdePackages.kate
     kdePackages.bluedevil
