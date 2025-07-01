@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  home.sessionVariables.SHELL = "${pkgs.zsh}/bin/zsh";
+
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;

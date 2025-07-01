@@ -4,16 +4,18 @@
   imports = [
     ./plasma/konsole.nix
     
-    ./programs/git.nix
-    ./programs/vscode.nix
-    ./programs/zsh.nix
+    ./programs/social/discord.nix
+
+    ./programs/coding/git.nix
+    ./programs/coding/vscode.nix
+    ./programs/coding/zsh.nix
   ];
 
-
-  home.sessionVariables.SHELL = "${pkgs.zsh}/bin/zsh";
   #home.username = "runior";
   #home.homeDirectory = "/home/runior";
   home.stateVersion = "25.05";  # Set to match your system version
 
-  programs.home-manager.enable = true;
+  home.packages = with pkgs; [
+    home-manager
+  ];
 }
