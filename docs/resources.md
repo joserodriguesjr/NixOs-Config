@@ -59,6 +59,10 @@ https://romsfun.com/roms/playstation-2/
 https://www.libretro.com/
 https://www.retroarch.com/
 
+#### PS3
+
+https://www.reddit.com/r/rpcs3/comments/kdy4w7/suggestions_for_optimizing_rpcs3_for_performance/
+
 #### PS4
 https://shadps4.net/
 https://github.com/fufexan/nix-gaming
