@@ -2,20 +2,21 @@
 
 ## Links
 
+### NixOS
+
+https://mynixos.com/
+
+Manual: https://nixos.org/manual/nixos/stable/
 Forum: https://discourse.nixos.org/
-
 Packages: https://search.nixos.org/packages?channel=25.05&size=50&sort=relevance&type=packages
-
 Options: https://search.nixos.org/options?channel=25.05&from=0&size=50&sort=relevance&type=packages
 
-## Manual
+## Home Manager
 
-NixOs -> https://nixos.org/manual/nixos/stable/
+Manual: https://nixos.wiki/wiki/Home_Manager
+Options: https://nix-community.github.io/home-manager/options.xhtml
 
-Home Manager -> https://nixos.wiki/wiki/Home_Manager
-Home Manager Options -> https://nix-community.github.io/home-manager/options.xhtml
 https://www.reddit.com/r/NixOS/comments/1bmtjjs/what_do_you_put_in_configurationnix_and_what_in/
-
 https://www.reddit.com/r/NixOS/comments/1bk430s/how_do_you_structure_your_modules_and_imports/
 
 ## Kernel

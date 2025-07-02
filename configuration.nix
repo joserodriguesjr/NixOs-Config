@@ -36,7 +36,7 @@ in
   users.users.runior = {
     isNormalUser = true;
     description = "Jose Rodrigues";
-    extraGroups = [ "networkmanager" "wheel" "kvm" "libvirtd" "docker" ];
+    extraGroups = [ "audio" "networkmanager" "wheel" "kvm" "libvirtd" "docker" ];
   };
 
   # Home-manager config
@@ -101,10 +101,14 @@ in
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
+    audio.enable = true;
+
     alsa.enable = true;
     alsa.support32Bit = true;
+
     pulse.enable = true;
-    jack.enable = false;
+    wireplumber.enable = true;
+    jack.enable = true;
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
@@ -131,14 +135,20 @@ in
     git
     zsh
 
-    unar
+    pavucontrol
+    alsa-utils
+    alsa-firmware
+    alsa-ucm-conf
+    sof-firmware
+    helvum # Great PipeWire graph visualizer
     
+    pciutils
+    unar
     htop
     wget
     curl
     fastfetch
 
-    kdePackages.kate
     kdePackages.bluedevil
     kdePackages.bluez-qt
   ];

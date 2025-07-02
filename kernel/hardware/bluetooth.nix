@@ -1,9 +1,11 @@
 { config, pkgs, ... }:
 {
-  # Enable Bluetooth
+  services.blueman.enable = true;
+  
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
+
     settings.General = {
       experimental = true; # show battery
 
@@ -15,9 +17,8 @@
       FastConnectable = true;
     };
   };
-  services.blueman.enable = true;
 
-  hardware.xpadneo.enable = true; # Enable the xpadneo driver for Xbox One wireless controllers
+  hardware.xpadneo.enable = true;
 
   boot = {
     extraModulePackages = with config.boot.kernelPackages; [ xpadneo ];
