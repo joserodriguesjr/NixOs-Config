@@ -38,6 +38,14 @@ bluetooth controller
 https://pastebin.com/Mir1GnrH
 https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/hardware/xone.nix
 
+https://www.reddit.com/r/NixOS/comments/1ch5d2p/help_needed_to_install_and_debug_xpadneo_xbox/
+https://mynixos.com/nixpkgs/option/hardware.xpadneo.enable
+https://github.com/search?type=code&auto_enroll=true&q=extraModulePackages+xpadneo
+
+https://nixos.wiki/wiki/Linux_kernel
+
+https://www.reddit.com/r/NixOS/comments/1hdsfz0/what_do_i_have_to_do_to_make_my_xbox_controller/
+
 #### PS2
 
 https://pcsx2.net/
@@ -49,6 +57,40 @@ https://romsfun.com/roms/playstation-2/
 
 https://www.libretro.com/
 https://www.retroarch.com/
+
+#### PS4
+https://shadps4.net/
+https://github.com/fufexan/nix-gaming
+
+{ pkgs ? import <nixpkgs> {} }:
+    pkgs.mkShell {
+    buildInputs = [
+    pkgs.clang
+    pkgs.cmake
+    pkgs.sndio
+    pkgs.jack2    
+    pkgs.zlib    
+    pkgs.libedit    
+    pkgs.pulseaudio    
+    pkgs.alsa-lib    
+    pkgs.openal    
+    pkgs.kdePackages.qtbase    
+    pkgs.kdePackages.qtdeclarative    
+    pkgs.kdePackages.qtmultimedia    
+    pkgs.kdePackages.qttools    
+    pkgs.kdePackages.qtwayland    
+    pkgs.xorg.libxcb    
+    pkgs.xorg.libXext    
+    pkgs.xorg.libX11    
+    pkgs.spirv-tools    
+    pkgs.vulkan-utility-libraries    
+    pkgs.ffmpeg_6-full    
+    pkgs.kdePackages.full    
+    pkgs.SDL2    
+    pkgs.vulkan-validation-layers    
+    pkgs.pkg-config    
+    ];   
+    }
 
 ### Docker
 
