@@ -24,6 +24,8 @@ Options: https://search.nixos.org/options?channel=25.05&from=0&size=50&sort=rele
 
 ## Home Manager
 
+https://home-manager-options.extranix.com/
+
 Manual: https://nixos.wiki/wiki/Home_Manager
 Options: https://nix-community.github.io/home-manager/options.xhtml
 
