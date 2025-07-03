@@ -1,3 +1,5 @@
+# https://github.com/nix-community/plasma-manager
+
 # $ nix-channel --add https://github.com/nix-community/plasma-manager/archive/trunk.tar.gz plasma-manager
 # $ nix-channel --update plasma-manager
 
@@ -16,10 +18,10 @@
         DefaultProfile = "zsh.profile";
       };
 
-# Already defined inside zsh.profile
-#      "UiSettings" = {
-#        ColorScheme = "NixOs";
-#      };
+      # Already defined inside zsh.profile
+      #      "UiSettings" = {
+      #        ColorScheme = "NixOs";
+      #      };
     };
 
     # /home/USER/.local/share

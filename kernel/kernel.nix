@@ -8,5 +8,7 @@
     ./emulator/rpcs3.nix
     
     ./hardware/bluetooth.nix
+
+    ./security/bitwarden.nix
   ];
 }

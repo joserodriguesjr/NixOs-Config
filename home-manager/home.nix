@@ -4,11 +4,10 @@
   imports = [
     ./plasma/konsole.nix
     
-    ./programs/social/discord.nix
-
-    ./programs/coding/git.nix
-    ./programs/coding/vscode.nix
-    ./programs/coding/zsh.nix
+    ./modules/direnv.nix
+    ./modules/git.nix
+    ./modules/vscode.nix
+    ./modules/zsh.nix
   ];
 
   #home.username = "runior";

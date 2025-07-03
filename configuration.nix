@@ -7,6 +7,8 @@ in
   imports =
     [
       ./hardware-configuration.nix
+      
+      ./apps/discord.nix
 
       ./kernel/kernel.nix
 
@@ -25,6 +27,9 @@ in
   
   nix.extraOptions = ''experimental-features = nix-command'';
 
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   programs.zsh.enable = true;
 
   users = {
@@ -42,7 +47,7 @@ in
   # Home-manager config
   home-manager.useUserPackages = true;  # Packages install to /etc/profiles
   home-manager.useGlobalPkgs = true;    # Use global package definitions
-  home-manager.users.runior = import ./userland/home.nix;
+  home-manager.users.runior = import ./home-manager/home.nix;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -120,9 +125,6 @@ in
   # Install firefox.
   programs.firefox.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -149,6 +151,7 @@ in
     curl
     fastfetch
 
+    kdePackages.kate
     kdePackages.bluedevil
     kdePackages.bluez-qt
   ];
