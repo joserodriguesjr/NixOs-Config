@@ -8,7 +8,7 @@ in
     [
       ./hardware-configuration.nix
       
-      ./apps/discord.nix
+      ./apps/app.nix
 
       ./kernel/kernel.nix
 
