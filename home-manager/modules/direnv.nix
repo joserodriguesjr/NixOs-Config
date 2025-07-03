@@ -7,7 +7,7 @@
 
     config = {
       whitelist = {
-        prefix = [ "~/code" ];
+        prefix = [ "~/Code" ];
       };
     };
 
