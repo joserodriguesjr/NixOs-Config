@@ -146,6 +146,7 @@ in
     
     pciutils
     unar
+    unrar
     htop
     wget
     curl
