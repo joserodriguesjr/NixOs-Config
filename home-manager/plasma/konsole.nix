@@ -1,7 +1,7 @@
 # https://github.com/nix-community/plasma-manager
 
-# $ nix-channel --add https://github.com/nix-community/plasma-manager/archive/trunk.tar.gz plasma-manager
-# $ nix-channel --update plasma-manager
+# sudo nix-channel --add https://github.com/nix-community/plasma-manager/archive/trunk.tar.gz plasma-manager
+# sudo nix-channel --update plasma-manager
 
 { pkgs, ...}:
 {
