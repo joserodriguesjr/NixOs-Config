@@ -42,6 +42,10 @@ in
     isNormalUser = true;
     description = "Jose Rodrigues";
     extraGroups = [ "audio" "networkmanager" "wheel" "kvm" "libvirtd" "docker" ];
+    #packages = with pkgs; [
+    #  kdePackages.kate
+    #  thunderbird
+    #];
   };
 
   # Home-manager config
@@ -181,10 +185,10 @@ in
   # networking.firewall.enable = false;
 
   # File system config
-  fileSystems."/mnt/ssd1tb" =
-    { device = "/dev/disk/by-uuid/6aca9d33-261d-4fc1-a117-a95c79186197";
-      fsType = "btrfs";
-    };
+  # fileSystems."/mnt/ssd1tb" =
+  #  { device = "/dev/disk/by-uuid/6aca9d33-261d-4fc1-a117-a95c79186197";
+  #    fsType = "btrfs";
+  #  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
