@@ -22,6 +22,7 @@
     shellAliases = {
       rebuild-nix = "sudo nixos-rebuild switch";
       upgrade-nix = "sudo nixos-rebuild switch --upgrade";
+      watch-nvidia-smi = "watch -n 0.5 nvidia-smi";
     };
     
     oh-my-zsh = {
