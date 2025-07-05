@@ -8,8 +8,6 @@ in
     [
       ./hardware-configuration.nix
       
-      ./apps/app.nix
-
       ./kernel/kernel.nix
 
       "${home-manager}/nixos"
@@ -107,6 +105,7 @@ in
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
+  # make pipewire realtime-capable
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -149,8 +148,12 @@ in
     helvum # Great PipeWire graph visualizer
     
     pciutils
+    lshw
+
     unar
     unrar
+    p7zip
+
     htop
     wget
     curl
