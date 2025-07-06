@@ -3,20 +3,15 @@
 # sudo nix-channel --add https://github.com/nix-community/plasma-manager/archive/trunk.tar.gz plasma-manager
 # sudo nix-channel --update plasma-manager
 
-{ pkgs, ...}:
-{
-  imports = [
-    <plasma-manager/modules>
-  ];
+{ pkgs, ... }: {
+  imports = [ <plasma-manager/modules> ];
 
   programs.plasma = {
     enable = true;
 
     # /home/USER/.config
     configFile."konsolerc" = {
-      "Desktop Entry" = {
-        DefaultProfile = "zsh.profile";
-      };
+      "Desktop Entry" = { DefaultProfile = "zsh.profile"; };
 
       # Already defined inside zsh.profile
       #      "UiSettings" = {
@@ -32,9 +27,7 @@
         Translucency = true;
       };
 
-      "Appearance" = {
-        ColorScheme = "NixOs";
-      };
+      "Appearance" = { ColorScheme = "NixOs"; };
     };
 
     dataFile."konsole/NixOs.colorscheme" = {
@@ -79,15 +72,15 @@
       "ForegroundIntense" = { Color = "61,174,233"; };
 
       "General" = {
-        Anchor="0.5,0.5";
+        Anchor = "0.5,0.5";
         Blur = true;
         Opacity = 0.75;
-        ColorRandomization=false;
-        FillStyle="Tile";
+        ColorRandomization = false;
+        FillStyle = "Tile";
 
-        Wallpaper="";
-        WallpaperFlipType="NoFlip";
-        WallpaperOpacity="1";
+        Wallpaper = "";
+        WallpaperFlipType = "NoFlip";
+        WallpaperOpacity = "1";
 
         Description = "NixOS - Breeze + Transparent";
         ColorScheme = "NixOs";

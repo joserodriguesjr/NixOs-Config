@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   home.sessionVariables.SHELL = "${pkgs.zsh}/bin/zsh";
@@ -9,22 +9,20 @@
     syntaxHighlighting.enable = true;
 
     # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.zsh.initContent
-    initContent = 
-      let 
-        #zshConfigEarlyInit = lib.mkOrder 500 "Starting ZSH..."; 
-        zshConfig = lib.mkOrder 1000 "fastfetch"; 
-      in 
-        lib.mkMerge [ 
-          #zshConfigEarlyInit 
-          zshConfig 
-        ];
+    initContent = let
+      #zshConfigEarlyInit = lib.mkOrder 500 "Starting ZSH..."; 
+      zshConfig = lib.mkOrder 1000 "fastfetch";
+    in lib.mkMerge [
+      #zshConfigEarlyInit 
+      zshConfig
+    ];
 
     shellAliases = {
       rebuild-nix = "sudo nixos-rebuild switch";
       upgrade-nix = "sudo nixos-rebuild switch --upgrade";
       watch-nvidia-smi = "watch -n 0.5 nvidia-smi";
     };
-    
+
     oh-my-zsh = {
       enable = true;
       theme = "robbyrussell";

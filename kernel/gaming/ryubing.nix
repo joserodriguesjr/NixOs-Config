@@ -9,11 +9,11 @@
 # 3. Click File > Open Ryujinx Folder in Ryujinx then put the prod.keys file and title.keys file (extracted from the .zip file downloaded in Step 1) inside the system folder within the folder that opens after clicking the menu. The final path for me where I put the .keys files was /home/deck/.config/Ryujinx/system/
 # 4. Click Tools > Install Firmware > Install a firmware from XCI or ZIP in Ryujinx then select the firmware .zip file that you downloaded in Step 1.
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
- environment.systemPackages = [
+  environment.systemPackages = [
     pkgs.ryubing
-#    pkgs.ryujinx
+    #    pkgs.ryujinx
   ];
 }

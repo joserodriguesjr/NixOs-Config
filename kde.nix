@@ -1,5 +1,3 @@
-{ config, pkgs, ... }:
-
 {
   programs.plasma.enable = true;
 
@@ -11,7 +9,7 @@
     effects = {
       blur = {
         enable = true;
-        background = true;  # Enable blur behind windows
+        background = true; # Enable blur behind windows
       };
     };
   };

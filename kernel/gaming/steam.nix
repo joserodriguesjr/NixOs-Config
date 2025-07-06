@@ -3,7 +3,7 @@
   programs.gamemode.enable = true;
 
   # https://nixos.wiki/wiki/Steam#Install
-  programs.steam ={
+  programs.steam = {
     enable = true;
     gamescopeSession.enable = true;
   };

@@ -1,29 +1,28 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
-  home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz;
-in
-{
-  imports =
-    [
-      ./hardware-configuration.nix
-      
-      ./kernel/kernel.nix
+  home-manager = builtins.fetchTarball
+    "https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz";
+in {
+  imports = [
+    ./hardware-configuration.nix
 
-      "${home-manager}/nixos"
-    ];
+    ./kernel/kernel.nix
+
+    "${home-manager}/nixos"
+  ];
 
   # Automatic updating
   system.autoUpgrade.enable = true;
   system.autoUpgrade.dates = "weekly";
-  
+
   # Automatic cleanup
   nix.gc.automatic = true;
   nix.gc.dates = "daily";
   nix.gc.options = "--delete-older-than 10d";
   nix.settings.auto-optimise-store = true;
-  
-  nix.extraOptions = ''experimental-features = nix-command'';
+
+  nix.settings.experimental-features = [ "nix-command" ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -39,7 +38,8 @@ in
   users.users.runior = {
     isNormalUser = true;
     description = "Jose Rodrigues";
-    extraGroups = [ "audio" "networkmanager" "wheel" "kvm" "libvirtd" "docker" ];
+    extraGroups =
+      [ "audio" "networkmanager" "wheel" "kvm" "libvirtd" "docker" ];
     #packages = with pkgs; [
     #  kdePackages.kate
     #  thunderbird
@@ -47,16 +47,16 @@ in
   };
 
   # Home-manager config
-  home-manager.useUserPackages = true;  # Packages install to /etc/profiles
-  home-manager.useGlobalPkgs = true;    # Use global package definitions
+  home-manager.useUserPackages = true; # Packages install to /etc/profiles
+  home-manager.useGlobalPkgs = true; # Use global package definitions
   home-manager.users.runior = import ./home-manager/home.nix;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  
+
   # For Thunderbolt / USB-C support
   services.hardware.bolt.enable = true;
 
@@ -145,13 +145,18 @@ in
     git
     zsh
 
+    nixfmt # evaluation warning: nixfmt was renamed to nixfmt-classic. The nixfmt attribute may be used for the new RFC 166-style formatter in the future, which is currently available as nixfmt-rfc-style
+    nixpkgs-fmt
+    nixd
+    nil
+
     pavucontrol
     alsa-utils
     alsa-firmware
     alsa-ucm-conf
     sof-firmware
     helvum # Great PipeWire graph visualizer
-    
+
     pciutils
     lshw
     virtualglLib
@@ -170,9 +175,7 @@ in
     kdePackages.bluez-qt
   ];
 
-  environment.shells = with pkgs; [
-    zsh
-  ];
+  environment.shells = with pkgs; [ zsh ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

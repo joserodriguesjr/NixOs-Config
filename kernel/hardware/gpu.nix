@@ -7,17 +7,14 @@
 # __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia %command%
 # __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only %command%
 
-{ config, pkgs, ... }:
-{
+{ config, ... }: {
 
   # Enable OpenGL
-  hardware.graphics = {
-    enable = true;
-  };
+  hardware.graphics = { enable = true; };
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
-#  services.xserver.videoDrivers = [ "nvidia" "displaylink" "modesetting" ];
+  #  services.xserver.videoDrivers = [ "nvidia" "displaylink" "modesetting" ];
 
   hardware.nvidia = {
     # Modesetting is required.
@@ -42,17 +39,19 @@
     open = true;
 
     # Enable the Nvidia settings menu,
-	  # accessible via `nvidia-settings`.
+    # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable; # Same as production
+    package =
+      config.boot.kernelPackages.nvidiaPackages.stable; # Same as production
     # package = config.boot.kernelPackages.nvidiaPackages.production; # Latest production driver
 
     prime = {
       offload = {
         enable = true;
-        enableOffloadCmd = true; # Lets you use `nvidia-offload %command%` in steam
+        enableOffloadCmd =
+          true; # Lets you use `nvidia-offload %command%` in steam
       };
       # In sync mode, rendering is completely delegated to the dGPU, while the iGPU only displays the rendered framebuffers copied from the dGPU.
       sync.enable = false;
@@ -61,7 +60,7 @@
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
       # amdgpuBusId = "PCI:0:0:0"; For AMD GPU
-	  };
+    };
 
   };
 }
