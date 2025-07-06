@@ -51,9 +51,14 @@ in
   home-manager.useGlobalPkgs = true;    # Use global package definitions
   home-manager.users.runior = import ./home-manager/home.nix;
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  
+  # For Thunderbolt / USB-C support
+  services.hardware.bolt.enable = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -149,6 +154,7 @@ in
     
     pciutils
     lshw
+    virtualglLib
 
     unar
     unrar
