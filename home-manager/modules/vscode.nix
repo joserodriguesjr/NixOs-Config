@@ -1,5 +1,7 @@
 {
-  programs.vscode = { enable = true; };
+  programs.vscode = {
+    enable = true;
+  };
 }
 
 #{ pkgs, ... }: {
@@ -16,7 +18,7 @@
 #      # Python
 #      ms-python.python
 #
-#      # Vim 
+#      # Vim
 #      vscodevim.vim
 #
 #      # Markdown highlighting/formatting/preview

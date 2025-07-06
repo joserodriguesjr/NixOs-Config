@@ -1,4 +1,6 @@
-{ config, ... }: {
+{ config, ... }:
+
+{
   services.blueman.enable = true;
 
   hardware.bluetooth = {

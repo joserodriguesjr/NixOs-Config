@@ -77,6 +77,7 @@ bluetooth controller
 <https://www.reddit.com/r/rpcs3/comments/kdy4w7/suggestions_for_optimizing_rpcs3_for_performance/>
 
 #### PS4
+
 <https://shadps4.net/>
 <https://github.com/fufexan/nix-gaming>
 
@@ -125,6 +126,7 @@ bluetooth controller
 <https://devenv.sh/>
 
 ### vscode
+
 <https://nixos.wiki/wiki/Visual_Studio_Code>
 
 <https://discourse.nixos.org/t/home-manager-vscode-extension-settings-mutableextensionsdir-false/33878>
@@ -134,4 +136,5 @@ bluetooth controller
 fonts: <https://medium.com/@miffataphlesfkagh/jetbrains-mono-a-special-font-for-developers-bc35443eec2f>
 
 ### shell
+
 <https://github.com/wahtique/dotfiles/blob/main/dot_config/home-manager/shell.nix.tmpl>

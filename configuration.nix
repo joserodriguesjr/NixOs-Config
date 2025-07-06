@@ -1,9 +1,9 @@
 { pkgs, ... }:
 
 let
-  home-manager = builtins.fetchTarball
-    "https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz";
-in {
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz";
+in
+{
   imports = [
     ./hardware-configuration.nix
 
@@ -38,8 +38,14 @@ in {
   users.users.runior = {
     isNormalUser = true;
     description = "Jose Rodrigues";
-    extraGroups =
-      [ "audio" "networkmanager" "wheel" "kvm" "libvirtd" "docker" ];
+    extraGroups = [
+      "audio"
+      "networkmanager"
+      "wheel"
+      "kvm"
+      "libvirtd"
+      "docker"
+    ];
     #packages = with pkgs; [
     #  kdePackages.kate
     #  thunderbird
@@ -145,8 +151,7 @@ in {
     git
     zsh
 
-    nixfmt # evaluation warning: nixfmt was renamed to nixfmt-classic. The nixfmt attribute may be used for the new RFC 166-style formatter in the future, which is currently available as nixfmt-rfc-style
-    nixpkgs-fmt
+    nixfmt-rfc-style
     nixd
     nil
 

@@ -31,7 +31,7 @@
     vulkan-loader
 
     # lutris # Play all your games on Linux
-    # bottles # Run Windows software on Linux 
+    # bottles # Run Windows software on Linux
     # wine
     # winetricks
   ];

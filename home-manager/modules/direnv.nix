@@ -5,13 +5,17 @@
 
     nix-direnv.enable = true;
 
-    config = { whitelist = { prefix = [ "~/Code" ]; }; };
+    config = {
+      whitelist = {
+        prefix = [ "~/Code" ];
+      };
+    };
 
   };
 }
 
 # Example
-#{ 
+#{
 #  pkgs ? import <nixpkgs> { }
 #}:
 #pkgs.mkShell {

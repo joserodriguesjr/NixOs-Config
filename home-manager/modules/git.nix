@@ -11,6 +11,8 @@
       credential.helper = "cache --timeout=6000";
     };
 
-    aliases = { s = "status -sb"; };
+    aliases = {
+      s = "status -sb";
+    };
   };
 }
