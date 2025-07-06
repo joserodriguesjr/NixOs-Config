@@ -2,6 +2,11 @@
 # https://nixos.wiki/wiki/CUDA
 # https://medium.com/@notquitethereyet_/gaming-on-nixos-%EF%B8%8F-f98506351a24
 
+# nvidia-offload %command%
+
+# __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia %command%
+# __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only %command%
+
 { config, pkgs, ... }:
 {
 
@@ -11,7 +16,8 @@
   };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["modesetting" "nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
+#  services.xserver.videoDrivers = [ "nvidia" "displaylink" "modesetting" ];
 
   hardware.nvidia = {
     # Modesetting is required.
@@ -21,11 +27,11 @@
     # Enable this if you have graphical corruption issues or application crashes after waking
     # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
     # of just the bare essentials.
-    powerManagement.enable = false;
+    powerManagement.enable = true;
 
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
+    powerManagement.finegrained = true;
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
@@ -48,10 +54,12 @@
         enable = true;
         enableOffloadCmd = true; # Lets you use `nvidia-offload %command%` in steam
       };
+      # In sync mode, rendering is completely delegated to the dGPU, while the iGPU only displays the rendered framebuffers copied from the dGPU.
+      sync.enable = false;
 
       # Make sure to use the correct Bus ID values for your system!
-      intelBusId = "PCI:00:02:0";
-      nvidiaBusId = "PCI:01:00:0";
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
       # amdgpuBusId = "PCI:0:0:0"; For AMD GPU
 	  };
 
