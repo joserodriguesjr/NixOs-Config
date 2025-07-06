@@ -22,7 +22,10 @@ in
   nix.gc.options = "--delete-older-than 10d";
   nix.settings.auto-optimise-store = true;
 
-  nix.settings.experimental-features = [ "nix-command" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -169,6 +172,7 @@ in
     unar
     unrar
     p7zip
+    appimage-run
 
     htop
     wget
