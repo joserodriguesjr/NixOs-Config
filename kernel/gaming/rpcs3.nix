@@ -2,6 +2,7 @@
 # Roms: https://romsfun.com/roms/ps3
 
 { pkgs, ... }:
+
 {
   environment.systemPackages = [ pkgs.rpcs3 ];
 }
