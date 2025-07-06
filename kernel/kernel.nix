@@ -6,6 +6,7 @@
 
     ./gaming/pcsx2.nix
     ./gaming/rpcs3.nix
+    ./gaming/shadps4.nix
     ./gaming/steam.nix
 
     ./hardware/bluetooth.nix
