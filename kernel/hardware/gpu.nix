@@ -7,13 +7,18 @@
 # __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia %command%
 # __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only %command%
 
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
 
   # Enable OpenGL
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
+    extraPackages = with pkgs; [
+      vaapiVdpau # Translates VA-API calls to VDPAU (useful on NVIDIA)
+      libvdpau-va-gl # Translates VDPAU to VA-API using OpenGL backend (enables HW decode on some setups)
+    ];
   };
 
   # Load nvidia driver for Xorg and Wayland
