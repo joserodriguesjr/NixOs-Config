@@ -23,6 +23,13 @@
       rebuild-nix = "sudo nixos-rebuild switch";
       upgrade-nix = "sudo nixos-rebuild switch --upgrade";
       clean-nix = "sudo nix-collect-garbage -d ";
+
+      restart-bluetooth = "
+      sudo rmmod btusb \
+      sudo modprobe btusb \
+      sudo systemctl restart bluetooth
+      ";
+
       watch-nvidia-smi = "watch -n 0.5 nvidia-smi";
     };
 
