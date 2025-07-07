@@ -20,6 +20,7 @@
     qbittorrent-enhanced
     discord
     bitwarden-desktop
+    microsoft-edge
 
     # Gaming
     # https://www.protondb.com/
