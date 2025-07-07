@@ -2,13 +2,14 @@
 
 ## TODO
 
+<https://nix.dev/tutorials/nix-language.html>
+
 add .envrc automatically with direnv to coding dirs (search for extension)
 
 explain all packages
 
 browser
 email client
-
 video player
 
 ## Links
