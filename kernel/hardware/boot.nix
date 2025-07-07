@@ -11,35 +11,49 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  # https://www.kernel.org/doc/html/next/x86/microcode.html
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  boot.loader = {
+    # Use the systemd-boot EFI boot loader.
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+
+    # Limit space occupied by generations in boot
+    systemd-boot.configurationLimit = 5;
+    grub.configurationLimit = 5;
+  };
+
   # Kernel modules required in the initrd to boot
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "thunderbolt"
-    "nvme"
-    "usb_storage"
-    "sd_mod"
-    "usbhid"
-  ];
-  # boot.initrd.availableKernelModules = [
-  #   "nvme" # NVMe SSD
-  #   "xhci_pci" # USB 3.x controller
-  #   "r8169" # Realtek 2.5GbE Ethernet
-  #   "i915" # Intel integrated graphics
-  #   "nvidia" # Dedicated NVIDIA GPU (proprietary driver)
-  #   "snd_hda_intel" # Audio (Intel and NVIDIA HDMI)
-  #   "iwlwifi" # Intel Wi-Fi
-  #   "ahci" # SATA controllers (fallback)
-  #   "thunderbolt" # Thunderbolt support (eGPU, docks)
-  #   "usbhid" # USB keyboard/mouse
-  #   "uas" # USB 3.0 storage devices using the USB Attached SCSI Protocol.
-  #   "usb_storage" # USB drives and external disks
-  #   "sd_mod" # SCSI/SATA/USB disk support
-  # ];
+  boot.initrd = {
+    kernelModules = [ ];
+
+    availableKernelModules = [
+      "xhci_pci"
+      "thunderbolt"
+      "nvme"
+      "usb_storage"
+      "sd_mod"
+      "usbhid"
+    ];
+    # boot.initrd.availableKernelModules = [
+    #   "nvme" # NVMe SSD
+    #   "xhci_pci" # USB 3.x controller
+    #   "r8169" # Realtek 2.5GbE Ethernet
+    #   "i915" # Intel integrated graphics
+    #   "nvidia" # Dedicated NVIDIA GPU (proprietary driver)
+    #   "snd_hda_intel" # Audio (Intel and NVIDIA HDMI)
+    #   "iwlwifi" # Intel Wi-Fi
+    #   "ahci" # SATA controllers (fallback)
+    #   "thunderbolt" # Thunderbolt support (eGPU, docks)
+    #   "usbhid" # USB keyboard/mouse
+    #   "uas" # USB 3.0 storage devices using the USB Attached SCSI Protocol.
+    #   "usb_storage" # USB drives and external disks
+    #   "sd_mod" # SCSI/SATA/USB disk support
+    # ];
+  };
 
   # Kernel modules to load in the second stage of boot
   boot.kernelModules = [ "kvm-intel" ];
@@ -59,8 +73,7 @@
   #   "kvm-intel" # Hardware virtualization (Intel VT-x)
   # ];
 
-  boot.initrd.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
+  # boot.extraModulePackages = [ ];
 
   #   # boot.extraModprobeConfig = ''
   #   #   options snd_hda_intel probe_mask=1

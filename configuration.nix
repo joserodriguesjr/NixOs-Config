@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
@@ -25,8 +25,8 @@ in
     "flakes"
   ];
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   programs.zsh.enable = true;
 
@@ -57,15 +57,6 @@ in
   home-manager.useUserPackages = true; # Packages install to /etc/profiles
   home-manager.useGlobalPkgs = true; # Use global package definitions
   home-manager.users.runior = import ./home-manager/home.nix;
-
-  # Bootloader.
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Limit space occupied by generations in boot
-  boot.loader.systemd-boot.configurationLimit = 5;
-  boot.loader.grub.configurationLimit = 5;
 
   hardware.enableRedistributableFirmware = true;
 
