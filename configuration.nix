@@ -1,12 +1,10 @@
 { pkgs, ... }:
 
 let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz";
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
 in
 {
   imports = [
-    ./hardware-configuration.nix
-
     ./kernel/kernel.nix
 
     "${home-manager}/nixos"
@@ -60,24 +58,19 @@ in
   home-manager.useGlobalPkgs = true; # Use global package definitions
   home-manager.users.runior = import ./home-manager/home.nix;
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   # Bootloader.
+  # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Limit space occupied by generations in boot
+  boot.loader.systemd-boot.configurationLimit = 5;
+  boot.loader.grub.configurationLimit = 5;
+
+  hardware.enableRedistributableFirmware = true;
+
   # For Thunderbolt / USB-C support
   services.hardware.bolt.enable = true;
-
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
@@ -140,7 +133,7 @@ in
   # services.xserver.libinput.enable = true;
 
   # Install firefox.
-  programs.firefox.enable = true;
+  # programs.firefox.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -166,6 +159,7 @@ in
     helvum # Great PipeWire graph visualizer
 
     pciutils
+    usbutils
     lshw
     virtualglLib
 
@@ -182,6 +176,7 @@ in
     kdePackages.kate
     kdePackages.bluedevil
     kdePackages.bluez-qt
+    kdePackages.plasma-thunderbolt
   ];
 
   environment.shells = with pkgs; [ zsh ];
@@ -199,12 +194,6 @@ in
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
   # File system config
   # fileSystems."/mnt/ssd1tb" =
   #  { device = "/dev/disk/by-uuid/6aca9d33-261d-4fc1-a117-a95c79186197";
@@ -218,5 +207,4 @@ in
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-
 }
