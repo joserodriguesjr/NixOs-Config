@@ -8,6 +8,7 @@
     ./gaming/rpcs3.nix
     ./gaming/shadps4.nix
     ./gaming/steam.nix
+    ./gaming/stream.nix
 
     ./hardware/bluetooth.nix
     ./hardware/gpu.nix
