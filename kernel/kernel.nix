@@ -11,31 +11,41 @@
     ./gaming/stream.nix
 
     ./hardware/bluetooth.nix
+    ./hardware/boot.nix
+    ./hardware/file-system.nix
     ./hardware/gpu.nix
+    ./hardware/network.nix
   ];
 
   # System-Wide Apps (Without configuration or documentation)
   environment.systemPackages = with pkgs; [
-    # Utils
-    qbittorrent-enhanced
-    discord
-    bitwarden-desktop
-    microsoft-edge
+    # ───── Utilities ─────
+    qbittorrent-enhanced # Torrent client with an enhanced user interface and features
+    discord # Chat and voice platform used especially by gaming communities
+    bitwarden-desktop # Secure open-source password manager
+    microsoft-edge # Chromium-based web browser by Microsoft
 
-    # Gaming
+    # ───── Gaming ─────
     # https://www.protondb.com/
-    mangohud # A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and more.
-    gamemode
-    protonup-qt # Install Wine and Proton-based Compatibility Tools
-    heroic # Open Source Launcher for GOG, Epic Games and Amazon Games
+    mangohud # Vulkan/OpenGL overlay for monitoring FPS, temps, CPU/GPU usage
+    gamemode # Optimizes Linux system performance while gaming
+    protonup-qt # GUI for installing and managing Proton-GE and Wine-GE versions
+    heroic # Open-source game launcher for Epic, GOG, and Amazon libraries
 
-    mesa
-    vulkan-headers
-    vulkan-loader
+    # ───── Graphics Drivers (Essential) ─────
+    nvidia-vaapi-driver # Enables VA-API hardware video decoding on NVIDIA GPUs
+    vulkan-loader # Vulkan runtime loader (libvulkan.so); needed to run Vulkan apps
+    mesa # OpenGL implementation; required even with NVIDIA drivers
+    vulkan-tools # Diagnostic tools like `vulkaninfo` and sample Vulkan apps
 
-    # lutris # Play all your games on Linux
-    # bottles # Run Windows software on Linux
-    # wine
-    # winetricks
+    # ───── Graphics Drivers (Optional / Dev) ─────
+    vulkan-headers # C/C++ header files to compile Vulkan applications
+    vulkan-validation-layers # Development tools to detect Vulkan API misusage
+
+    # Optional: Additional wine environments (commented out)
+    # lutris                 # Unified game launcher supporting Wine, emulators, and native games
+    # bottles                # Easy-to-use GUI for managing Wine environments
+    # wine                   # Compatibility layer for running Windows apps
+    # winetricks             # Script to install libraries and tweaks inside Wine prefixes
   ];
 }
