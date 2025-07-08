@@ -58,8 +58,6 @@ in
   home-manager.useGlobalPkgs = true; # Use global package definitions
   home-manager.users.runior = import ./home-manager/home.nix;
 
-  hardware.enableRedistributableFirmware = true;
-
   # For Thunderbolt / USB-C support
   services.hardware.bolt.enable = true;
 
