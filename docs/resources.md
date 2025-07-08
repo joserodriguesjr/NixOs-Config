@@ -4,9 +4,10 @@
 
 <https://nix.dev/tutorials/nix-language.html>
 
-add .envrc automatically with direnv to coding dirs (search for extension)
+add .envrc automatically with direnv to coding dirs (<https://github.com/the-nix-way/dev-templates?tab=readme-ov-file>)
 
 explain all packages
+break packages into categories in kernel
 
 browser
 email client
