@@ -31,6 +31,15 @@
       ";
 
       watch-nvidia-smi = "watch -n 0.5 nvidia-smi";
+
+      # todo: command to clean boot (sometimes after many nixos-rebuild it fills up)
+      # see if its full
+      # $ df -h /boot
+      # remove old entries and free space
+      # $ sudo nix-collect-garbage -d
+      # $ sudo bootctl remove --all
+      # reinstall boot
+      # $ sudo bootctl install
     };
 
     oh-my-zsh = {
