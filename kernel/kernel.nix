@@ -24,6 +24,7 @@
     discord # Chat and voice platform used especially by gaming communities
     bitwarden-desktop # Secure open-source password manager
     microsoft-edge # Chromium-based web browser by Microsoft
+    bottles # Easy-to-use GUI for managing Wine environments
 
     # ───── Gaming ─────
     # https://www.protondb.com/
@@ -44,7 +45,6 @@
 
     # Optional: Additional wine environments (commented out)
     # lutris                 # Unified game launcher supporting Wine, emulators, and native games
-    # bottles                # Easy-to-use GUI for managing Wine environments
     # wine                   # Compatibility layer for running Windows apps
     # winetricks             # Script to install libraries and tweaks inside Wine prefixes
   ];
