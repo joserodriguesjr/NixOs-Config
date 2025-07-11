@@ -25,6 +25,7 @@
     bitwarden-desktop # Secure open-source password manager
     microsoft-edge # Chromium-based web browser by Microsoft
     bottles # Easy-to-use GUI for managing Wine environments
+    gparted # GUI partition manager
 
     # ───── Gaming ─────
     # https://www.protondb.com/
