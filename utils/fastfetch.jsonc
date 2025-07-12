@@ -51,31 +51,54 @@
     },
     {
       "type": "host",
-      "key": "PC",
+      "keyIcon": "󰌢",
+      "key": "┌(PC)",
       "keyColor": "green"
     },
     {
       // default: 13th Gen Intel(R) Core(TM) i9-13900HX (16+16) @ 5.40 GHz - 51.0°C
       "type": "cpu",
-      "key": "│ ├ (CPU)",
+      "keyIcon": "",
+      "key": "├(CPU)",
       "keyColor": "green",
       "showPeCoreCount": true,
       "format": "{name} ({cores-physical}C/{cores-logical}T) - {freq-max} ({temperature})",
       "temp": true
     },
+    // {
+    // default: NVIDIA GeForce RTX 4060 Max-Q / Mobile [Discrete]
+    // default: Intel Raptor Lake-S UHD Graphics @ 1.65 GHz [Integrated]
+
+    // using fastfetch way:
+    // 󰾲 ├(GPU 1):            NVIDIA - GeForce RTX 4060 Max-Q / Mobile [Discrete] ()
+    // 󰾲 ├(GPU 2):            Intel - Raptor Lake-S UHD Graphics [Integrated] ()
+
+    //   "type": "gpu",
+    //   "keyIcon": "󰾲",
+    //   "key": "├(GPU {index})",
+    //   "keyColor": "green",
+    //   "format": "{vendor} - {name} [{type}] ({temperature})",
+    //   "driverSpecific": true,
+    //   "temp": true
+    // },
     {
-      // default: NVIDIA GeForce RTX 4060 Max-Q / Mobile [Discrete]
-      // default: Intel Raptor Lake-S UHD Graphics @ 1.65 GHz [Integrated]
-      "type": "gpu",
-      "key": "│ ├󰍛 (GPU {index})",
+      "type": "command",
+      "keyIcon": "󰾲",
+      "key": "├(GPU 1)",
       "keyColor": "green",
-      "format": "{vendor} - {name} [{type}] ({temperature})",
-      "driverSpecific": true,
-      "temp": true
+      "text": "/home/runior/NixOs/utils/get_nvidia_info.sh"
+    },
+    {
+      "type": "command",
+      "keyIcon": "󰾲",
+      "key": "├(GPU 2)",
+      "keyColor": "green",
+      "text": "/home/runior/NixOs/utils/get_intel_info.sh"
     },
     {
       "type": "memory",
-      "key": "│ ├󰍛 (RAM)",
+      "keyIcon": "",
+      "key": "├(RAM)",
       "keyColor": "green",
       "percent": {
         "type": 3, // Show both percentage number and bar
@@ -85,7 +108,8 @@
     },
     {
       "type": "swap",
-      "key": "│ ├󰍛 (SWAP)",
+      "keyIcon": "󰓡",
+      "key": "├(SWAP)",
       "keyColor": "green",
       "percent": {
         "type": 3, // Show both percentage number and bar
@@ -95,7 +119,8 @@
     },
     {
       "type": "disk",
-      "key": "│ ├ ({mountpoint})",
+      "keyIcon": "",
+      "key": "├({mountpoint})",
       "keyColor": "green",
       "percent": {
         "type": 3, // Show both percentage number and bar
@@ -105,7 +130,8 @@
     },
     {
       "type": "localip",
-      "key": "└ └󰛳 (Local IP)",
+      "keyIcon": "󰩟",
+      "key": "└(Local IP)",
       "keyColor": "green"
     },
     {
@@ -119,73 +145,95 @@
     },
     {
       "type": "os",
-      "key": "OS",
+      "keyIcon": "",
+      "key": "┌(OS)",
       "keyColor": "yellow"
     },
     {
       "type": "kernel",
-      "key": "│ ├ (Kernel)",
+      "keyIcon": "",
+      "key": "├(Kernel)",
       "keyColor": "yellow"
     },
     {
+      "type": "command",
+      "keyIcon": "",
+      "key": "├(NVIDIA Driver)",
+      "keyColor": "yellow",
+      "text": "nvidia-smi --query-gpu=driver_version --format=csv,noheader"
+    },
+    {
       "type": "bios",
-      "key": "│ ├ (Bios)",
+      "keyIcon": "",
+      "key": "├(Bios)",
       "keyColor": "yellow"
     },
     {
       "type": "packages",
-      "key": "│ ├󰏖 (Packages)",
+      "keyIcon": "󰏖",
+      "key": "├(Packages)",
       "keyColor": "yellow"
     },
     {
       "type": "shell",
-      "key": "│ ├ (Shell)",
+      "keyIcon": "",
+      "key": "├(Shell)",
       "keyColor": "yellow"
     },
     {
       "type": "display",
-      "key": "│ ├󰍹 ({name})",
+      "keyIcon": "󰍹",
+      "key": "├({name})",
       "keyColor": "yellow"
     },
     {
       "type": "sound",
-      "key": "│ ├ (SND)",
+      "keyIcon": "",
+      "key": "├(SND)",
       "keyColor": "yellow"
     },
     {
       "type": "player",
-      "key": "│ ├󰥠 (Player)",
+      "keyIcon": "󰥠",
+      "key": "├(Player)",
       "keyColor": "yellow"
     },
     {
       "type": "media",
-      "key": "└ └󰝚 (Media)",
+      "keyIcon": "󰝚",
+      "key": "└(Media)",
       "keyColor": "yellow"
     },
     "break",
     {
-      "type": "de",
-      "key": "DE",
-      "keyColor": "blue"
+      "type": "command",
+      "keyIcon": "",
+      "key": "┌(DE)",
+      "keyColor": "blue",
+      "text": "/home/runior/NixOs/utils/get_desktop_info.sh"
     },
     {
       "type": "lm",
-      "key": "│ ├ (LM)",
+      "keyIcon": "󰧨",
+      "key": "├(LM)",
       "keyColor": "blue"
     },
     {
       "type": "wm",
-      "key": "│ ├ (WM)",
+      "keyIcon": "",
+      "key": "├(WM)",
       "keyColor": "blue"
     },
     {
       "type": "wmtheme",
-      "key": "│ ├󰉼 (Theme)",
+      "keyIcon": "󰉼",
+      "key": "├(Theme)",
       "keyColor": "blue"
     },
     {
       "type": "terminal",
-      "key": "└ └ (Terminal)",
+      "keyIcon": "",
+      "key": "└(Terminal)",
       "keyColor": "blue"
     },
     {
@@ -199,22 +247,26 @@
     },
     {
       "type": "users",
+      "keyIcon": "",
       "key": "  Users",
       "keyColor": "magenta"
     },
     {
       "type": "command",
+      "keyIcon": "",
       "key": "  OS Age",
       "keyColor": "magenta",
       "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
     },
     {
       "type": "uptime",
+      "keyIcon": "",
       "key": "  Uptime",
       "keyColor": "magenta"
     },
     {
       "type": "datetime",
+      "keyIcon": "",
       "key": "  DateTime",
       "keyColor": "magenta"
     },
