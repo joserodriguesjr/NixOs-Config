@@ -131,7 +131,6 @@ in
 
     docker
     docker-compose
-    lazydocker
 
     git
     zsh
@@ -157,7 +156,6 @@ in
     p7zip
     appimage-run
 
-    htop
     wget
     curl
     fastfetch

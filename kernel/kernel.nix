@@ -44,6 +44,12 @@
     vulkan-headers # C/C++ header files to compile Vulkan applications
     vulkan-validation-layers # Development tools to detect Vulkan API misusage
 
+    # ───── Monitoring processes & containers ─────
+    htop
+    btop
+    ctop
+    lazydocker
+
     # Optional: Additional wine environments (commented out)
     # lutris                 # Unified game launcher supporting Wine, emulators, and native games
     # wine                   # Compatibility layer for running Windows apps
