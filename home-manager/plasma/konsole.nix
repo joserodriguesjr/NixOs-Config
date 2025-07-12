@@ -33,6 +33,7 @@
 
       "Appearance" = {
         ColorScheme = "NixOs";
+        Font = "FiraCode Nerd Font,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
       };
     };
 
