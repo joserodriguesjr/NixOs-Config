@@ -43,7 +43,7 @@
     // "constants": ["──────────────────────────────"],
 
     "key": {
-      "width": 24, // Aligns keys to this width
+      "width": 28, // Aligns keys to this width
       "type": "both" // string, icon, both, or none
     },
     "bar": {
@@ -77,15 +77,22 @@
       "key": "┌(PC)",
       "keyColor": "green"
     },
+    // {
+    //   // default: 13th Gen Intel(R) Core(TM) i9-13900HX (16+16) @ 5.40 GHz - 51.0°C
+    //   "type": "cpu",
+    //   "keyIcon": "",
+    //   "key": "├(CPU)",
+    //   "keyColor": "green",
+    //   "showPeCoreCount": true,
+    //   "format": "{name} ({cores-physical}C/{cores-logical}T) - {freq-max} ({temperature})",
+    //   "temp": true
+    // },
     {
-      // default: 13th Gen Intel(R) Core(TM) i9-13900HX (16+16) @ 5.40 GHz - 51.0°C
-      "type": "cpu",
+      "type": "command",
       "keyIcon": "",
       "key": "├(CPU)",
       "keyColor": "green",
-      "showPeCoreCount": true,
-      "format": "{name} ({cores-physical}C/{cores-logical}T) - {freq-max} ({temperature})",
-      "temp": true
+      "text": "/home/runior/NixOs/fastfetch/scripts/get_intel_cpu_info.sh"
     },
     // {
     // default: NVIDIA GeForce RTX 4060 Max-Q / Mobile [Discrete]
@@ -115,7 +122,7 @@
       "keyIcon": "󰾲",
       "key": "├(GPU 2)",
       "keyColor": "green",
-      "text": "/home/runior/NixOs/fastfetch/scripts/get_intel_info.sh"
+      "text": "/home/runior/NixOs/fastfetch/scripts/get_intel_gpu_info.sh"
     },
     {
       "type": "memory",
@@ -153,8 +160,38 @@
     {
       "type": "localip",
       "keyIcon": "󰩟",
-      "key": "└(Local IP)",
-      "keyColor": "green"
+      "key": "├(Local IP)",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "publicip",
+      "keyIcon": "󰩠",
+      "key": "├(Public IP)",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "dns",
+      "keyIcon": "󰇖",
+      "key": "├(DNS)",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "netio",
+      "keyIcon": "󰾆",
+      "key": "├(NetIO)",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "wifi",
+      "keyIcon": "",
+      "key": "├(Wifi)",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "bluetoothradio",
+      "keyIcon": "󰐻",
+      "key": "└(Bluetooth Radio)",
+      "keyColor": "cyan"
     },
     {
       "type": "custom",
@@ -226,11 +263,10 @@
       "key": "└(Media)",
       "keyColor": "yellow"
     },
-    "break",
     {
       "type": "command",
       "keyIcon": "",
-      "key": "┌(DE)",
+      "key": "├(DE)",
       "keyColor": "blue",
       "text": "/home/runior/NixOs/fastfetch/scripts/get_desktop_info.sh"
     },
