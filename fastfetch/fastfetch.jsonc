@@ -1,12 +1,34 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
-    "type": "builtin",
-    "height": 15,
-    "width": 30,
+    "type": "kitty",
+    "source": "/home/runior/NixOs/fastfetch/logo/spider.png",
+    "preserveAspectRatio": true,
+    "printRemaining": true,
+    "recache": true,
+    // "chafa": {
+    //   "fgOnly": false,
+    //   "canvasMode": "TRUECOLOR",
+    //   "colorSpace": "RGB",
+    //   "ditherMode": "NONE"
+    // },
+    // "color": {
+    //   "1": "red",
+    //   "2": "blue",
+    //   "3": "blue",
+    //   "4": "blue",
+    //   "5": "blue",
+    //   "6": "blue",
+    //   "7": "blue",
+    //   "8": "blue",
+    //   "9": "blue"
+    // },
+    // "height": 15,
+    "width": 45,
     "padding": {
-      "top": 10,
-      "left": 3
+      "top": 1,
+      "left": 5,
+      "right": 5
     }
   },
   "display": {
@@ -86,14 +108,14 @@
       "keyIcon": "󰾲",
       "key": "├(GPU 1)",
       "keyColor": "green",
-      "text": "/home/runior/NixOs/utils/get_nvidia_info.sh"
+      "text": "/home/runior/NixOs/fastfetch/scripts/get_nvidia_info.sh"
     },
     {
       "type": "command",
       "keyIcon": "󰾲",
       "key": "├(GPU 2)",
       "keyColor": "green",
-      "text": "/home/runior/NixOs/utils/get_intel_info.sh"
+      "text": "/home/runior/NixOs/fastfetch/scripts/get_intel_info.sh"
     },
     {
       "type": "memory",
@@ -210,7 +232,7 @@
       "keyIcon": "",
       "key": "┌(DE)",
       "keyColor": "blue",
-      "text": "/home/runior/NixOs/utils/get_desktop_info.sh"
+      "text": "/home/runior/NixOs/fastfetch/scripts/get_desktop_info.sh"
     },
     {
       "type": "lm",
