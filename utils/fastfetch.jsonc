@@ -1,0 +1,236 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "builtin",
+    "height": 15,
+    "width": 30,
+    "padding": {
+      "top": 10,
+      "left": 3
+    }
+  },
+  "display": {
+    "separator": ": ", // Separator between keys and values
+    // "separator": " -> ",
+
+    // "color": {
+    //   "keys": "blue", // Key color
+    //   "title": "red" // Title color
+    // },
+
+    // "constants": ["──────────────────────────────"],
+
+    "key": {
+      "width": 24, // Aligns keys to this width
+      "type": "both" // string, icon, both, or none
+    },
+    "bar": {
+      "width": 10, // Width of percentage bars
+      "charElapsed": "■", // Character for elapsed portion
+      "charTotal": "-" // Character for total portion
+    }
+    // "percent": {
+    //   "type": 9, // 1=number, 2=bar, 3=both, 9=colored number
+    //   "color": {
+    //     "green": "green",
+    //     "yellow": "light_yellow",
+    //     "red": "light_red"
+    //   }
+    // }
+  },
+  "modules": [
+    "break",
+    // {
+    //   "type": "custom",
+    //   "format": "┌{$1}{$1}┐",
+    //   "outputColor": "90"
+    // },
+    {
+      "type": "custom",
+      "format": "\u001b[90m┌──────────────────────────────────────────────Hardware───────────────────────────────────────────────┐"
+    },
+    {
+      "type": "host",
+      "key": "PC",
+      "keyColor": "green"
+    },
+    {
+      // default: 13th Gen Intel(R) Core(TM) i9-13900HX (16+16) @ 5.40 GHz - 51.0°C
+      "type": "cpu",
+      "key": "│ ├ (CPU)",
+      "keyColor": "green",
+      "showPeCoreCount": true,
+      "format": "{name} ({cores-physical}C/{cores-logical}T) - {freq-max} ({temperature})",
+      "temp": true
+    },
+    {
+      // default: NVIDIA GeForce RTX 4060 Max-Q / Mobile [Discrete]
+      // default: Intel Raptor Lake-S UHD Graphics @ 1.65 GHz [Integrated]
+      "type": "gpu",
+      "key": "│ ├󰍛 (GPU {index})",
+      "keyColor": "green",
+      "format": "{vendor} - {name} [{type}] ({temperature})",
+      "driverSpecific": true,
+      "temp": true
+    },
+    {
+      "type": "memory",
+      "key": "│ ├󰍛 (RAM)",
+      "keyColor": "green",
+      "percent": {
+        "type": 3, // Show both percentage number and bar
+        "green": 50, // Values below 50% in green
+        "yellow": 70 // 50-70% in yellow, >70% in red
+      }
+    },
+    {
+      "type": "swap",
+      "key": "│ ├󰍛 (SWAP)",
+      "keyColor": "green",
+      "percent": {
+        "type": 3, // Show both percentage number and bar
+        "green": 50, // Values below 50% in green
+        "yellow": 70 // 50-70% in yellow, >70% in red
+      }
+    },
+    {
+      "type": "disk",
+      "key": "│ ├ ({mountpoint})",
+      "keyColor": "green",
+      "percent": {
+        "type": 3, // Show both percentage number and bar
+        "green": 50, // Values below 50% in green
+        "yellow": 70 // 50-70% in yellow, >70% in red
+      }
+    },
+    {
+      "type": "localip",
+      "key": "└ └󰛳 (Local IP)",
+      "keyColor": "green"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[90m└─────────────────────────────────────────────────────────────────────────────────────────────────────┘" // Matching footer
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "\u001b[90m┌──────────────────────────────────────────────Software───────────────────────────────────────────────┐" // Adjust dashes to fit your info column width
+    },
+    {
+      "type": "os",
+      "key": "OS",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "kernel",
+      "key": "│ ├ (Kernel)",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "bios",
+      "key": "│ ├ (Bios)",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "packages",
+      "key": "│ ├󰏖 (Packages)",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "shell",
+      "key": "│ ├ (Shell)",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "display",
+      "key": "│ ├󰍹 ({name})",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "sound",
+      "key": "│ ├ (SND)",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "player",
+      "key": "│ ├󰥠 (Player)",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "media",
+      "key": "└ └󰝚 (Media)",
+      "keyColor": "yellow"
+    },
+    "break",
+    {
+      "type": "de",
+      "key": "DE",
+      "keyColor": "blue"
+    },
+    {
+      "type": "lm",
+      "key": "│ ├ (LM)",
+      "keyColor": "blue"
+    },
+    {
+      "type": "wm",
+      "key": "│ ├ (WM)",
+      "keyColor": "blue"
+    },
+    {
+      "type": "wmtheme",
+      "key": "│ ├󰉼 (Theme)",
+      "keyColor": "blue"
+    },
+    {
+      "type": "terminal",
+      "key": "└ └ (Terminal)",
+      "keyColor": "blue"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[90m└─────────────────────────────────────────────────────────────────────────────────────────────────────┘" // Matching footer
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "\u001b[90m┌─────────────────────────────────────────────System Info─────────────────────────────────────────────┐" // Adjust dashes to fit your info column width
+    },
+    {
+      "type": "users",
+      "key": "  Users",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "command",
+      "key": "  OS Age",
+      "keyColor": "magenta",
+      "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+    },
+    {
+      "type": "uptime",
+      "key": "  Uptime",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "datetime",
+      "key": "  DateTime",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[90m└─────────────────────────────────────────────────────────────────────────────────────────────────────┘" // Matching footer
+    },
+    // {
+    //   "type": "custom",
+    //   "format": "└{$1}{$1}┘",
+    //   "outputColor": "90"
+    // },
+    {
+      "type": "colors",
+      "paddingLeft": 2,
+      "symbol": "circle"
+    }
+  ]
+}
