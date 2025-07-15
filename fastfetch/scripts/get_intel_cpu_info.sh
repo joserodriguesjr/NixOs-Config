@@ -40,10 +40,9 @@ CPU_TEMPERATURE_RAW=$(sensors 2>/dev/null)
 CPU_TEMPERATURE=$(echo "$CPU_TEMPERATURE_RAW" | grep -E "Package id 0:|Package 0:" | awk '{print $4}' | tr -d '+' | cut -d'.' -f1 | xargs)
 CPU_TEMPERATURE=${CPU_TEMPERATURE:-"N/A"} # Default if not found
 
-# CPU Utilization (requires top)
 # Get idle percentage and subtract from 100
-# CPU_IDLE_RAW=$(top -bn1 2>/dev/null | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print int($1)}' | xargs)
-CPU_UTILIZATION=$(top -bn1 | grep '%Cpu' | tail -1 | grep -P '(....|...) id,'|awk '{print int($1)}' | xargs)
+CPU_IDLE_RAW=$(top -bn1 | grep '%Cpu' | tail -1 | grep -P '(....|...) id,'| awk '{print int($8)}' | xargs)
+CPU_UTILIZATION=$((100-CPU_IDLE_RAW))
 
 # --- ANSI Color Codes ---
 COLOR_RED='\e[31m'
@@ -79,4 +78,4 @@ fi
 # --- Assemble the final string ---
 # Example: 13th Gen Intel(R) Core(TM) i9-13900HX (24C/32T) - 5.40 GHz (63.0°C) (XX%)
 # echo -e "${CPU_NAME} (${ACTUAL_CORES}C/${TOTAL_THREADS}T) - ${CPU_FREQ_GHZ} GHz (${TEMP_COLOR}${CPU_TEMPERATURE}°C${COLOR_RESET}) (${UTIL_COLOR}${CPU_UTILIZATION}%${COLOR_RESET})"
-echo -e "${CPU_NAME} (${ACTUAL_CORES}C/${TOTAL_THREADS}T) - 5.40 GHz CPU(${UTIL_COLOR}${CPU_UTILIZATION}%${COLOR_RESET}) (${TEMP_COLOR}${CPU_TEMPERATURE}°C${COLOR_RESET})"
+echo -e "${CPU_NAME} (${ACTUAL_CORES}C/${TOTAL_THREADS}T) @ 5.40 GHz - CPU(${UTIL_COLOR}${CPU_UTILIZATION}%${COLOR_RESET}) (${TEMP_COLOR}${CPU_TEMPERATURE}°C${COLOR_RESET})"
