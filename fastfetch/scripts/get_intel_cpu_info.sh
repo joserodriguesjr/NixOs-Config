@@ -18,21 +18,8 @@ fi
 TOTAL_THREADS=${TOTAL_THREADS:-"N/A"}
 
 # CPU Frequency (Max frequency)
-# # CPU_MAX_MHZ_RAW=$(lscpu | grep "CPU max MHz:" | awk '{print $4}' | xargs 2>/dev/null)
-# CPU_MAX_MHZ_RAW=$(lscpu | awk -F: '/CPU max MHz/ { gsub(/^[ \t]+/, "", $2); print $2 }')
-# echo "DEBUG: RAW MHZ: '${CPU_MAX_MHZ_RAW}'" # Debug line
-# CPU_MAX_GHZ=$(awk "BEGIN { printf \"%.1f\", $CPU_MAX_MHZ_RAW / 1000  }")
-# echo "CPU Max Frequency: ${CPU_MAX_GHZ} GHz"
-# # Replace comma with dot for bc, then ensure it's a valid number for calculation
-# CPU_MAX_MHZ_CLEANED=$(echo "${CPU_MAX_MHZ_RAW}" | sed 's/,/./g' | xargs)
-# echo "DEBUG: CLEANED MHZ: '${CPU_MAX_MHZ_CLEANED}'" # Debug line
-
-# Now, use the cleaned number for bc
-# FIX: Prepend LC_NUMERIC=C to force bc to use dot as decimal separator
-# CPU_FREQ_GHZ=$(LC_NUMERIC=C echo "scale=2; ${CPU_MAX_MHZ_CLEANED:-0} / 1000" | bc 2>/dev/null)
-# echo "DEBUG: BC Output GHZ: '${CPU_FREQ_GHZ}'" # Debug line
-# CPU_FREQ_GHZ=${CPU_FREQ_GHZ:-"N/A"}
-# echo "DEBUG: FINAL GHZ: '${CPU_FREQ_GHZ}'" # Debug line
+CPU_MAX_MHZ_RAW=$(lscpu | grep "CPU max MHz:" | awk '{print int($4)}' | xargs)
+CPU_MAX_GHZ=$(awk "BEGIN { printf \"%.1f\", $CPU_MAX_MHZ_RAW / 1000  }")
 
 # CPU Temperature (requires lm_sensors)
 # Grep for "Package id 0:" or "Package 0:" depending on sensors output
@@ -76,6 +63,4 @@ if [[ "$CPU_UTILIZATION" =~ ^[0-9]+$ ]]; then
 fi
 
 # --- Assemble the final string ---
-# Example: 13th Gen Intel(R) Core(TM) i9-13900HX (24C/32T) - 5.40 GHz (63.0°C) (XX%)
-# echo -e "${CPU_NAME} (${ACTUAL_CORES}C/${TOTAL_THREADS}T) - ${CPU_FREQ_GHZ} GHz (${TEMP_COLOR}${CPU_TEMPERATURE}°C${COLOR_RESET}) (${UTIL_COLOR}${CPU_UTILIZATION}%${COLOR_RESET})"
-echo -e "${CPU_NAME} (${ACTUAL_CORES}C/${TOTAL_THREADS}T) @ 5.40 GHz - CPU(${UTIL_COLOR}${CPU_UTILIZATION}%${COLOR_RESET}) (${TEMP_COLOR}${CPU_TEMPERATURE}°C${COLOR_RESET})"
+echo -e "${CPU_NAME} (${ACTUAL_CORES}C/${TOTAL_THREADS}T) @ ${CPU_MAX_GHZ} GHz - CPU(${UTIL_COLOR}${CPU_UTILIZATION}%${COLOR_RESET}) (${TEMP_COLOR}${CPU_TEMPERATURE}°C${COLOR_RESET})"
