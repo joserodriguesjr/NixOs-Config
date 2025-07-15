@@ -20,6 +20,8 @@ TOTAL_THREADS=${TOTAL_THREADS:-"N/A"}
 # CPU Frequency (Max frequency)
 CPU_MAX_MHZ_RAW=$(lscpu | grep "CPU max MHz:" | awk '{print int($4)}' | xargs)
 CPU_MAX_GHZ=$(awk "BEGIN { printf \"%.1f\", $CPU_MAX_MHZ_RAW / 1000  }")
+CPU_AVG_FREQ_RAW=$(cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_avg_freq)
+CPU_AVG_FREQ=$(awk "BEGIN { printf \"%.1f\", ($CPU_AVG_FREQ_RAW / 1000) / 1000  }")
 
 # CPU Temperature (requires lm_sensors)
 # Grep for "Package id 0:" or "Package 0:" depending on sensors output
@@ -63,4 +65,4 @@ if [[ "$CPU_UTILIZATION" =~ ^[0-9]+$ ]]; then
 fi
 
 # --- Assemble the final string ---
-echo -e "${CPU_NAME} (${ACTUAL_CORES}C/${TOTAL_THREADS}T) @ ${CPU_MAX_GHZ} GHz - CPU(${UTIL_COLOR}${CPU_UTILIZATION}%${COLOR_RESET}) (${TEMP_COLOR}${CPU_TEMPERATURE}°C${COLOR_RESET})"
+echo -e "${CPU_NAME} (${ACTUAL_CORES}C/${TOTAL_THREADS}T) @ ${CPU_AVG_FREQ}/${CPU_MAX_GHZ} GHz - CPU(${UTIL_COLOR}${CPU_UTILIZATION}%${COLOR_RESET}) (${TEMP_COLOR}${CPU_TEMPERATURE}°C${COLOR_RESET})"
