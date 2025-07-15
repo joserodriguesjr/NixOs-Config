@@ -15,6 +15,7 @@
     ./hardware/file-system.nix
     ./hardware/gpu.nix
     ./hardware/network.nix
+    ./hardware/security.nix
   ];
 
   # System-Wide Apps (Without configuration or documentation)
@@ -49,6 +50,10 @@
     btop
     ctop
     lazydocker
+
+    # ───── Peripherical metrics ─────
+    lm_sensors
+    intel-gpu-tools
 
     # Optional: Additional wine environments (commented out)
     # lutris                 # Unified game launcher supporting Wine, emulators, and native games

@@ -1,8 +1,4 @@
 # Get Intel GPU Name and Type
-# lspci -vnn will give detailed info, then grep for Intel display controllers
-# Example output: 00:02.0 VGA compatible controller [0300]: Intel Corporation Raptor Lake-S UHD Graphics [8086:a780] (rev 04)
-# We want "Raptor Lake-S UHD Graphics" and infer "Integrated"
-
 INTEL_GPU_FULL_LINE=$(lspci -vnn | grep -i "vga\|3d\|display" | grep -i "intel" | head -n 1 2>/dev/null)
 
 INTEL_GPU_NAME=""
@@ -24,5 +20,24 @@ if [ -z "$INTEL_GPU_NAME" ]; then
     exit 1
 fi
 
-# Assemble the final string as requested: "Intel - Raptor Lake-S UHD Graphics [Integrated] ()"
-echo "Intel - ${INTEL_GPU_NAME} [${GPU_TYPE}] ()"
+# --- Get Intel GPU Utilization ---
+INTEL_GPU_UTILIZATION=$(timeout 1.2s intel_gpu_top -l 1 | sed -n '4p' | awk '{print int($7)}' | xargs)
+
+# --- ANSI Color Codes ---
+COLOR_RED='\e[31m'
+COLOR_YELLOW='\e[33m'
+COLOR_GREEN='\e[32m'
+COLOR_RESET='\e[0m'
+# ------------------------
+
+GPU_COLOR=""
+if (( INTEL_GPU_UTILIZATION >= 80 )); then
+    GPU_COLOR="${COLOR_RED}"
+elif (( INTEL_GPU_UTILIZATION >= 40 )); then
+    GPU_COLOR="${COLOR_YELLOW}"
+else
+    GPU_COLOR="${COLOR_GREEN}"
+fi
+
+# --- Assemble the final string ---
+echo -e "Intel - ${INTEL_GPU_NAME} [${GPU_TYPE}] GPU(${GPU_COLOR}${INTEL_GPU_UTILIZATION}%${COLOR_RESET})"
