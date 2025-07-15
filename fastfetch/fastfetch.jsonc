@@ -2,10 +2,10 @@
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
     "type": "auto",
-    "source": "/home/runior/NixOs/fastfetch/logo/shrek.txt",
-    "preserveAspectRatio": true,
-    "printRemaining": true,
-    "recache": true,
+    "source": "/home/runior/NixOs/fastfetch/logo/dbz.txt",
+    // "preserveAspectRatio": true,
+    // "printRemaining": true,
+    // "recache": true,
     // "chafa": {
     //   "fgOnly": false,
     //   "canvasMode": "TRUECOLOR",
@@ -13,8 +13,8 @@
     //   "ditherMode": "NONE"
     // },
     "color": {
-      "1": "green"
-      // "2": "blue",
+      "1": "red"
+      // "2": "blue"
       // "3": "blue",
       // "4": "blue",
       // "5": "blue",
@@ -22,14 +22,14 @@
       // "7": "blue",
       // "8": "blue",
       // "9": "blue"
-    },
-    // "height": 15,
-    "width": 45,
-    "padding": {
-      "top": 7,
-      "left": 5,
-      "right": 5
     }
+    // "height": 15,
+    // "width": 45
+    // "padding": {
+    //   "top": 7,
+    //   "left": 5,
+    //   "right": 5
+    // }
   },
   "display": {
     "separator": ": ", // Separator between keys and values
